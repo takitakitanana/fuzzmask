@@ -14,16 +14,10 @@
 2. **Clone the Repository**:
     ```powershell
     git clone https://github.com/takitakitanana/fuzzmask.git
+    cd fuzzmask
     ```
 
 3. **Build and Run fuzzmask**:
-
-    - **Navigate to the Project Directory**:
-        ```powershell
-        cd fuzzmask
-        ```
-
-    then
 
     - a) **Run in Development Mode**:
         ```powershell
@@ -53,7 +47,7 @@
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     ```
 
-   This command downloads and runs the Rust installer script. Follow the prompts to complete the installation. Once installed, you may need to restart your terminal or source your profile to make Rust available.
+   Follow the prompts to complete the installation. Once installed, you may need to restart your terminal or source your profile to make Rust available.
 
    To verify the installation, run:
 
@@ -68,15 +62,17 @@
     cd fuzzmask
     ```
 
-3. **Set Up for Cross-Compilation to Windows (amd64)**:
+3. **Set Up for Cross-Compilation to Windows**:
    
-   To compile for Windows, install the required `x86_64-pc-windows-gnu` target:
+   To compile for Windows (amd64), install the required `x86_64-pc-windows-gnu` target:
 
     ```bash
     rustup target add x86_64-pc-windows-gnu
     ```
 
-   Additionally, ensure you have **GCC** installed with `mingw-w64` (for creating Windows executables) on your Linux system. On Debian/Ubuntu, you can install it with:
+   Additionally, ensure you have **GCC** installed with `mingw-w64` (for creating Windows executables) on your Linux system.
+   
+   On Debian/Ubuntu, you can install it with:
 
     ```bash
     sudo apt update
