@@ -21,12 +21,16 @@ A tool designed to obfuscate and m*?k paths in PowerShell.
         cd fuzzmask
         ```
 
-    - **Run in Development Mode**:
+    then
+
+    - a) **Run in Development Mode**:
         ```powershell
         cargo run -- --path C:\Windows\System32\schtasks.exe
         ```
 
-    - **Or Build the Release Binary**:
+    or
+
+    - b) **Build the Release Binary**:
         ```powershell
         cargo build --release
         ```
