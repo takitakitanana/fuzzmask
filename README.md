@@ -1,6 +1,8 @@
-# fuzzmask
+<br>
 
-A tool designed to obfuscate and m*?k paths in PowerShell.
+![Banner](docs/images/banner.png)
+
+<p align="center">A tool designed to obfuscate and m*?k paths for PowerShell use.</p>
 
 ## Quick Start
 
