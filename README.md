@@ -1,6 +1,6 @@
 # fuzzmask
 
-A tool designed to obfuscate and m''*+"Sk" PowerShell commands.
+A tool designed to obfuscate and m*?k paths in PowerShell.
 
 ## Quick Start
 
