@@ -52,7 +52,7 @@ A tool designed to obfuscate and m*?k paths in PowerShell.
 
 ### Options
 
-![Help](docs/images/help.png)
+![Options](docs/images/options.png)
 
 ## Contributing
 
