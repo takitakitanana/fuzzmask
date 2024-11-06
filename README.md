@@ -2,19 +2,42 @@
 
 ![Banner](docs/images/banner.png)
 
-<p align="center">A tool designed to obfuscate and m*?k paths for PowerShell use.</p>
+<p align="center">
+    fuzzm*?k is a Rust-based tool that aims to obfuscate Windows living-off-the-land binary paths for PowerShell use.
+</p>
+
+## About
+
+It’s a series of techniques designed to obscure binary executable paths and increase the complexity of static analysis, using various encoding methods and transformations to evade detection and challenge reverse engineering efforts.
+
+On its own, it does little; it’s meant to be part of a broader attack framework, adding stealth to multi-layered offensive operations.
+
+### Techniques
+
+- `?` matches exactly one character, allowing subtle character substitutions within a binary path while still resolving correctly.
+
+- `*` can match any sequence of characters, allowing a path to resolve even if characters in the middle or end of a binary name are obscured.
+
+- _More to be added soon™._
+
+    - Example: `i''Ex''""([cHaR]67+":\*\*e*\?''???''??K?''.*E")` == `C:\Windows\System32\schtasks.exe`.
+
+<p align="center">
+    <img src="docs/images/demo.gif" alt="Demo">
+</p>
+
+All printed paths are verified to work and match the original input, this is confirmed using the PowerShell command `Get-Item -Path`.
 
 ## Quick Start
 
-### Windows
+### Windows (Recommended, VM with snapshots)
 
 1. **Install Rust**:  
-   Visit the [Rust installation page](https://www.rust-lang.org/tools/install) and follow the instructions to install Rust using `rustup`.
+    Visit the [Rust installation page](https://www.rust-lang.org/tools/install) and follow the instructions to install Rust using `rustup`.
 
 2. **Clone the Repository**:
     ```powershell
-    git clone https://github.com/takitakitanana/fuzzmask.git
-    cd fuzzmask
+    git clone https://github.com/takitakitanana/fuzzmask.git; cd fuzzmask
     ```
 
 3. **Build and Run fuzzmask**:
@@ -26,30 +49,26 @@
 
     or
 
-    - b) **Build the Release Binary**:
+    - b) **Build and Run the Release Binary**:
         ```powershell
         cargo build --release
-        ```
-
-    - **Run the Release Binary**:
-        ```powershell
         .\target\release\fuzzmask.exe --path C:\Windows\System32\schtasks.exe
         ```
 
-### Linux
+### Linux / macOS
 
 1. **Install Rust**:  
-   Visit the [Rust installation page](https://www.rust-lang.org/tools/install) and follow the instructions to install Rust using `rustup`.
+    Visit the [Rust installation page](https://www.rust-lang.org/tools/install) and follow the instructions to install Rust using `rustup`.
 
-   Using rustup (Recommended):
+    Using rustup (Recommended):
 
     ```bash
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     ```
 
-   Follow the prompts to complete the installation. Once installed, you may need to restart your terminal or source your profile to make Rust available.
+    Follow the prompts to complete the installation. Once installed, you may need to restart your terminal or source your profile to make Rust available.
 
-   To verify the installation, run:
+    To verify the installation, run:
 
     ```bash
     rustc --version
@@ -58,54 +77,53 @@
 2. **Clone the Repository**:
    
     ```bash
-    git clone https://github.com/takitakitanana/fuzzmask.git
-    cd fuzzmask
+    git clone https://github.com/takitakitanana/fuzzmask.git; cd fuzzmask
     ```
 
 3. **Set Up for Cross-Compilation to Windows**:
    
-   To compile for Windows (amd64), install the required `x86_64-pc-windows-gnu` target:
+    To compile for Windows (amd64), install the required `x86_64-pc-windows-gnu` target:
 
     ```bash
     rustup target add x86_64-pc-windows-gnu
     ```
 
-   Additionally, ensure you have **GCC** installed with `mingw-w64` (for creating Windows executables) on your Linux system.
+    Additionally, ensure you have `gcc` installed with `mingw-w64` (for creating Windows executables) on your Linux system.
    
-   On Debian/Ubuntu, you can install it with:
+- On Debian/Ubuntu, you can install it with:
 
     ```bash
-    sudo apt update
-    sudo apt install mingw-w64 -y
+    sudo apt update && sudo apt install gcc mingw-w64 -y
+    ```
+
+- On macOS you can use [Homebrew](https://brew.sh/) to install `mingw-w64`:
+    ```bash
+    brew install mingw-w64
     ```
 
 4. **Build the Release Binary for Windows (amd64)**:
 
-   Now that the environment is set up for cross-compiling, use the following command to create a Windows executable:
+    Now that the environment is set up for cross-compiling, use the following command to create a Windows executable:
 
     ```bash
     cargo build --release --target x86_64-pc-windows-gnu
     ```
 
-   This will produce a Windows-compatible `.exe` file located in the `target/x86_64-pc-windows-gnu/release/` directory.
+    This will produce a Windows-compatible `.exe` file located in the `target/x86_64-pc-windows-gnu/release/` directory.
 
 5. **Run the Windows Executable on a Windows Machine**:
 
-   Copy the `fuzzmask.exe` file from the Linux `target/x86_64-pc-windows-gnu/release/` directory to a Windows machine. You can then run it using:
+    Copy the `fuzzmask.exe` file from the Linux / macOS `target/x86_64-pc-windows-gnu/release/` directory to a Windows machine. You can then run it using:
 
     ```powershell
     fuzzmask.exe --path C:\Windows\System32\schtasks.exe
     ```
 
-## Usage
+## Options
 
-### Demo
-
-![Demo](docs/images/demo.gif)
-
-### Options
-
-![Options](docs/images/options.png)
+<p align="center">
+    <img src="docs/images/options.gif" alt="Options">
+</p>
 
 ## Contributing
 
