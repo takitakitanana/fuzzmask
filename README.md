@@ -20,7 +20,7 @@ On its own, it does little; it’s meant to be part of a broader attack framewor
 
 - _More to be added soon™._
 
-    - Example: `i''Ex''""([cHaR]67+":\*\*e*\?''???''??K?''.*E")` == `C:\Windows\System32\schtasks.exe`.
+    - Example: `i''Ex''""([cHaR]67+":\*\*e*\?''???''??K?''.*E")`
 
 <p align="center">
     <img src="docs/images/demo.gif" alt="Demo">
