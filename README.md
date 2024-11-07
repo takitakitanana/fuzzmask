@@ -1,6 +1,6 @@
-<br>
-
-![Banner](docs/images/banner.png)
+<p align="center">
+    <img src="docs/images/banner.png" alt="Banner">
+</p>
 
 <p align="center">
     fuzzm*?k is a Rust-based tool that aims to obfuscate Windows living-off-the-land binary paths for PowerShell use.
@@ -8,6 +8,11 @@
 
 ## About
 
+fuzzm*?k it’s about a series of techniques designed to obscure binary executable paths and increase the complexity of static analysis, using various encoding methods and transformations to evade detection and challenge reverse engineering efforts.
+
+On its own, it does little; it’s meant to be part of a broader attack framework, adding level to multi-layered offensive operations.
+
+- [Patterns](#patterns)
 - [Quick Start](#quick-start)
     - [Windows](#windows)
     - [Linux / macOS](#linux--macos)
@@ -15,17 +20,13 @@
 - [Options](#options)
 - [Contributing](#contributing)
 
-It’s a series of techniques designed to obscure binary executable paths and increase the complexity of static analysis, using various encoding methods and transformations to evade detection and challenge reverse engineering efforts.
-
-On its own, it does little; it’s meant to be part of a broader attack framework, adding level to multi-layered offensive operations.
-
-### Techniques
+## Patterns
 
 - `?` matches exactly one character, allowing subtle character substitutions within a binary path while still resolving correctly.
 
 - `*` can match any sequence of characters, allowing a path to resolve even if characters at the beginning, middle, or end of a binary name are obscured.
 
-- _More to be added soon™._
+- _More to be added in v2.0.0 soon™._
 
     - Example: `i''Ex''""([cHaR]67+":\*\*e*\?''???''??K?''.*E")`
 
@@ -178,3 +179,5 @@ If you prefer to use Docker for building the Windows executable, you can use the
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+For more details on contributing, see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
