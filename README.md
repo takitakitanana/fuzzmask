@@ -26,7 +26,7 @@ On its own, it does little; it’s meant to be part of a broader attack framewor
 
 - `*` can match any sequence of characters, allowing a path to resolve even if characters at the beginning, middle, or end of a binary name are obscured.
 
-- _More to be added in v2.0.0 soon™._
+- _More to be added soon™._
 
     - Example: `i''Ex''""([cHaR]67+":\*\*e*\?''???''??K?''.*E")`
 
