@@ -10,13 +10,13 @@
 
 It’s a series of techniques designed to obscure binary executable paths and increase the complexity of static analysis, using various encoding methods and transformations to evade detection and challenge reverse engineering efforts.
 
-On its own, it does little; it’s meant to be part of a broader attack framework, adding stealth to multi-layered offensive operations.
+On its own, it does little; it’s meant to be part of a broader attack framework, adding level to multi-layered offensive operations.
 
 ### Techniques
 
 - `?` matches exactly one character, allowing subtle character substitutions within a binary path while still resolving correctly.
 
-- `*` can match any sequence of characters, allowing a path to resolve even if characters in the middle or end of a binary name are obscured.
+- `*` can match any sequence of characters, allowing a path to resolve even if characters at the beginning, middle, or end of a binary name are obscured.
 
 - _More to be added soon™._
 
@@ -26,11 +26,11 @@ On its own, it does little; it’s meant to be part of a broader attack framewor
     <img src="docs/images/demo.gif" alt="Demo">
 </p>
 
-All printed paths are verified to work and match the original input, this is confirmed using the PowerShell command `Get-Item -Path`.
+All printed paths are verified to match and resolve the original input, this is confirmed using the `Get-Item -Path` PowerShell command.
 
 ## Quick Start
 
-### Windows (Recommended, VM with snapshots)
+### Windows
 
 1. **Install Rust**:  
     Visit the [Rust installation page](https://www.rust-lang.org/tools/install) and follow the instructions to install Rust using `rustup`.
@@ -114,6 +114,49 @@ All printed paths are verified to work and match the original input, this is con
 5. **Run the Windows Executable on a Windows Machine**:
 
     Copy the `fuzzmask.exe` file from the Linux / macOS `target/x86_64-pc-windows-gnu/release/` directory to a Windows machine. You can then run it using:
+
+    ```powershell
+    fuzzmask.exe --path C:\Windows\System32\schtasks.exe
+    ```
+
+### Docker
+
+If you prefer to use Docker for building the Windows executable, you can use the provided `Dockerfile`. This Docker setup will handle the cross-compilation for Windows (amd64), creating a Windows-compatible executable from any environment.
+
+1. **Install Docker**:  
+    - **Windows**: Download and install Docker Desktop from [Docker’s official site](https://www.docker.com/products/docker-desktop/).
+    - **Linux**: Follow the installation instructions on [Docker’s official site](https://docs.docker.com/engine/install/) for your distribution.
+    - **macOS**: Download and install Docker Desktop from [Docker’s official site](https://www.docker.com/products/docker-desktop/).
+
+2. **Clone the Repository**:
+   
+    ```bash
+    git clone https://github.com/takitakitanana/fuzzmask.git; cd fuzzmask
+    ```
+
+3. **Build the Docker Image**:
+
+    ```bash
+    docker build -t fuzzmask .
+    ```
+
+4. **Build the Windows Executable (amd64)**:
+
+    - **Windows**:
+    ```powershell
+    docker run --rm -v "${PWD}:/app" -v "${PWD}/target:/app/target" fuzzmask
+    ```
+
+    - **Linux / macOS**:
+    ```bash
+    docker run --rm -v $(pwd):/app -v $(pwd)/target:/app/target fuzzmask
+    ```
+
+    After running this command, you should find the `fuzzmask.exe` file in the `target/x86_64-pc-windows-gnu/release/` directory on your host machine.
+
+5. **Copy and Run the Windows Executable on a Windows Machine**:
+
+    After building, copy the `fuzzmask.exe` file from the `target/x86_64-pc-windows-gnu/release/` directory on your Windows machine. Once on Windows, you can run the executable as follows:
 
     ```powershell
     fuzzmask.exe --path C:\Windows\System32\schtasks.exe
