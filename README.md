@@ -8,6 +8,13 @@
 
 ## About
 
+- [Quick Start](#quick-start)
+    - [Windows](#windows)
+    - [Linux / macOS](#linux--macos)
+    - [Docker](#docker)
+- [Options](#options)
+- [Contributing](#contributing)
+
 It’s a series of techniques designed to obscure binary executable paths and increase the complexity of static analysis, using various encoding methods and transformations to evade detection and challenge reverse engineering efforts.
 
 On its own, it does little; it’s meant to be part of a broader attack framework, adding level to multi-layered offensive operations.
