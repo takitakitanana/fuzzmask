@@ -162,9 +162,11 @@ If you prefer to use Docker for building the Windows executable, you can use the
 
     After running this command, you should find the `fuzzmask.exe` file in the `target/x86_64-pc-windows-gnu/release/` directory on your host machine.
 
-5. **Copy and Run the Windows Executable on a Windows Machine**:
+5. **Copy and Run the Executable on a Windows Machine**:
 
-    After building, copy the `fuzzmask.exe` file from the `target/x86_64-pc-windows-gnu/release/` directory on your Windows machine. Once on Windows, you can run the executable as follows:
+    After building, copy the `fuzzmask.exe` file from the `target/x86_64-pc-windows-gnu/release/` directory on your Windows machine.
+    
+    You can run the executable as follows:
 
     ```powershell
     fuzzmask.exe --path C:\Windows\System32\schtasks.exe
